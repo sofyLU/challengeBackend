@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Permission.Common.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,13 +10,8 @@ using System.Threading.Tasks;
 
 namespace Permission.Domain.Entities
 {
-    public class PermissionEntity
+    public class PermissionEntity : BaseEntity
     {
-        [Comment("Unique Id")]
-        [Column(TypeName = "integer")]
-        [Key]
-        public int Id { get; set; }
-
         [Column(TypeName = "text")]
         [Comment("Employee Forename")]
         public string EmployeeForename { get; set; }
@@ -30,6 +26,10 @@ namespace Permission.Domain.Entities
 
         [Comment("Permission Type")]
         public virtual PermissionTypeEntity PermissionType { get; set; }
+
+        protected PermissionEntity(int id) : base(id) 
+        {
+        }
 
     }
 }

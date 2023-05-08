@@ -1,4 +1,5 @@
-﻿using Permission.Common.Domain.Specification;
+﻿using Permission.Common.Domain.Entities;
+using Permission.Common.Domain.Specification;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Permission.Common.Domain.Interfaces.Repositories
 {
-    public interface IBaseRepository<T> where T : class
+    public interface IBaseRepository<T> where T : BaseEntity
     {
         Task<IReadOnlyCollection<T>> GetAll(Criteria<T>? criteria = null);
         Task<int> Count(List<Specification<T>>? specifications = null);

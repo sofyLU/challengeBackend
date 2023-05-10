@@ -4,6 +4,11 @@
     <ProjectReference Include="..\CQRS.Core\CQRS.Core.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\Permission.Domain\Permission.Domain.csproj" />
+		<ProjectReference Include="..\Permission.Infrastructure\Permission.Infrastructure.csproj" />
+	</ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>

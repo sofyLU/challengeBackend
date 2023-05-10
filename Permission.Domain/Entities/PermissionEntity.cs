@@ -1,21 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Permission.Common.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Permission.Domain.Entities
 {
-    public class PermissionEntity
+    public class PermissionEntity : BaseEntity
     {
-        [Comment("Unique Id")]
-        [Column(TypeName = "integer")]
-        [Key]
-        public int Id { get; set; }
-
         [Column(TypeName = "text")]
         [Comment("Employee Forename")]
         public string EmployeeForename { get; set; }
@@ -29,7 +26,16 @@ namespace Permission.Domain.Entities
         public DateTime PermissionDate { get; set; }
 
         [Comment("Permission Type")]
+        [JsonIgnore]
         public virtual PermissionTypeEntity PermissionType { get; set; }
 
+        public PermissionEntity()
+        {
+        }
+        protected PermissionEntity(int id) : base(id) 
+        {
+        }
+
+       
     }
 }

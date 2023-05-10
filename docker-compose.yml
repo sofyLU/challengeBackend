@@ -21,7 +21,8 @@ services:
       - sqlserver:/var/opt/mssql
 
   zookeeper:
-    image: bitnami/zookeeper
+    image: zookeeper
+    container_name: zookeeper
     restart: always
     ports:
       - "2181:2181"
@@ -31,7 +32,7 @@ services:
       - ALLOW_ANONYMOUS_LOGIN=yes
 
   kafka:
-    image: bitnami/kafka
+    image: confluentinc/cp-kafka
     ports:
       - "9092:9092"
     restart: always
@@ -45,9 +46,47 @@ services:
     depends_on:
       - zookeeper  
 
+  mongo:
+    image: mongo:latest
+    container_name: mongo-container
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data_container:/data/db
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.12.0
+    container_name: elasticsearch
+    environment:
+      - xpack.monitoring.enabled=true
+      - xpack.watcher.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    networks:
+      - mydockernetwork
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.12.0
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    networks:
+      - mydockernetwork
+
 volumes:
   sqlserver:
   zookeeper_data:
     driver: local
   kafka_data:
     driver: local
+  mongodb_data_container:
+  esdata:

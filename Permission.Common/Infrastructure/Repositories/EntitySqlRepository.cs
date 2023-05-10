@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Permission.Common.Domain.Entities;
 using Permission.Common.Domain.Interfaces.Repositories;
 using Permission.Common.Domain.Interfaces.Services;
 using Permission.Common.Domain.Specification;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace Permission.Common.Infrastructure.Repositories
 {
     public class EntitySqlRepository<T> : IEntitySqlRepository<T>
-        where T : class
+        where T : BaseEntity
     {
         private readonly DbContext _dbContext;
         private readonly IEntityFrameworkBuilder<T> _entityFrameworkBuilder;
@@ -72,7 +73,7 @@ namespace Permission.Common.Infrastructure.Repositories
             return result;
         }
 
-        public virtual async Task<T?> GetById(Guid id)
+        public virtual async Task<T?> GetById(int id)
         {
             return await _dbContext.Set<T>().FirstOrDefaultAsync(e => e.Id.Equals(id));
         }

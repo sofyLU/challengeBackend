@@ -11,6 +11,6 @@ namespace Permission.Application.Commands
     {
         public string EmployeeName { get; set; }
         public string EmployeeSurName { get; set; }
-        public int PermissionType { get; set; }
+        public int PermissionTypeId { get; set; }
     }
 }

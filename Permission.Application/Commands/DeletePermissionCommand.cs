@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Permission.Application.Commands
 {
-    internal class DeletePermissionCommand : BaseCommand
+    public class DeletePermissionCommand : BaseCommand
     {
         public int PermissionId { get; set; }
         public string EmployeeName { get; set; }    

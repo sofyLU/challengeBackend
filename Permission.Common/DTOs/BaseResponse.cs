@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Permission.Application.Queries
+namespace Permission.Common.DTOs
 {
-    internal class GetPermissionQuery
+    public class BaseResponse
     {
+        public string Message { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Permission.Common.Events;
-using Permission.Common.Events.DTOs;
+using Permission.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace Permission.Domain.Aggregates
         public bool _active;
         private string _employeeName;
         private string _employeeSurName;
-        private PermissionTypeDto _permissionType;
+        private int _permissionTypeId;
         private DateTime _created;
 
         public bool Active
@@ -26,14 +26,14 @@ namespace Permission.Domain.Aggregates
 
         }
 
-        public PermissionAggregate(Guid id, string employeeName,  string employeeSurName, PermissionTypeDto permissionTypes)
+        public PermissionAggregate(int id, string employeeName,  string employeeSurName, int permissionTypeId)
         {
             RaiseEvent(new PermissionCreatedEvent
             {
                 Id = id,
               EmployeeName = employeeName,
               EmployeeSurName = employeeSurName,
-              PermissionType = permissionTypes,
+              PermissionTypeId = permissionTypeId,
               created = DateTime.Now,
             });
         }
@@ -43,12 +43,12 @@ namespace Permission.Domain.Aggregates
             _id = @event.Id;
             _active = true;
             _employeeName = @event.EmployeeName;
-            _employeeName = @event.EmployeeSurName;
-            _permissionType = @event.PermissionType;
+            _employeeSurName = @event.EmployeeSurName;
+            _permissionTypeId = @event.PermissionTypeId;
             _created = @event.created;
         }
 
-        public void ModifyPermission(string employeeName, string employeeSurName, PermissionTypeDto permissionTypes)
+        public void ModifyPermission(string employeeName, string employeeSurName, int permissionTypeId)
         {
             if (!_active)
             {
@@ -67,10 +67,10 @@ namespace Permission.Domain.Aggregates
                     $"Please provide a valid {nameof(employeeName)}");
             }
 
-            if(permissionTypes.Id <= 0)
+            if(permissionTypeId <= 0)
             {
-                throw new InvalidOperationException($"The value of {nameof(permissionTypes.Id)} shoud be greater than 0. " +
-                    $"Please provide a valid {nameof(permissionTypes.Id)}");
+                throw new InvalidOperationException($"The value of {nameof(permissionTypeId)} shoud be greater than 0. " +
+                    $"Please provide a valid {nameof(permissionTypeId)}");
             }
 
             RaiseEvent(new PermissionUpdatedEvent
@@ -78,7 +78,7 @@ namespace Permission.Domain.Aggregates
                 Id = _id,
                 EmployeeName = employeeName,
                 EmployeeSurName = employeeSurName,
-                PermissionType = permissionTypes
+                PermissionTypeId = permissionTypeId
             });
         }
 

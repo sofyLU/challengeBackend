@@ -1,11 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-	<ItemGroup>
-	  <Compile Remove="Events\PermissionDeletedEvent.cs" />
-	  <Compile Remove="Events\PermissionTypeCreatedEvent.cs" />
-	  <Compile Remove="Events\PermissionTypeDeletedEvent.cs" />
-	  <Compile Remove="Events\PermissionTypeUpdatedEvent.cs" />
-	</ItemGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<ItemGroup>
 		<ProjectReference Include="..\CQRS.Core\CQRS.Core.csproj" />

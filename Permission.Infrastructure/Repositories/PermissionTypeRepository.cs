@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Permission.Infrastructure.Repositories
 {
-    internal class PermissionTypeRepository : EntitySqlRepository<PermissionEntity>, IPermissionTypeRepository
+    public class PermissionTypeRepository : EntitySqlRepository<PermissionTypeEntity>, IPermissionTypeRepository
     {
         private readonly DataBaseContext _context;
 
@@ -24,6 +24,5 @@ namespace Permission.Infrastructure.Repositories
         }
 
         public IUnitOfWork UnitOfWork => _context;
-    {
     }
 }

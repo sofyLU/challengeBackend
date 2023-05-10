@@ -1,4 +1,5 @@
-﻿using Permission.Common.Domain.Specification;
+﻿using Permission.Common.Domain.Entities;
+using Permission.Common.Domain.Specification;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Permission.Common.Domain.Interfaces.Services
 {
-    public interface IEntityFrameworkBuilder<T> where T : class
+    public interface IEntityFrameworkBuilder<T> where T : BaseEntity
     {
         Expression<Func<T, bool>>? GetWhereExpression(List<Specification<T>> specifications);
 

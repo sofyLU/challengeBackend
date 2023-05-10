@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Permission.Domain.Entities;
 using Permission.Domain.SeedWork;
+using Permission.Infrastructure.EntityConfigurations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace Permission.Infrastructure.DataAccess
 {
     public class DataBaseContext : DbContext, IUnitOfWork
-    {
+    { 
         public DataBaseContext(DbContextOptions options) : base(options) 
         { 
         }
@@ -22,6 +23,11 @@ namespace Permission.Infrastructure.DataAccess
         {
             var result = await base.SaveChangesAsync(cancellationToken);
             return true;
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new PermissionConfig());
         }
     }
 }

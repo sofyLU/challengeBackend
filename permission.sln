@@ -3,25 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Permission.Api", "Permission.Api\Permission.Api.csproj", "{A9F197B0-4279-469B-B22C-3ECFC41A53FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Permission.Api", "Permission.Api\Permission.Api.csproj", "{A9F197B0-4279-469B-B22C-3ECFC41A53FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Permission.Domain", "Permission.Domain\Permission.Domain.csproj", "{5F27BC5B-F6C4-4211-939D-5998ADAC56B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Permission.Domain", "Permission.Domain\Permission.Domain.csproj", "{5F27BC5B-F6C4-4211-939D-5998ADAC56B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Permission.Application", "Permission.Application\Permission.Application.csproj", "{193D739A-ED20-4B69-B232-11462C90C766}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Permission.Application", "Permission.Application\Permission.Application.csproj", "{193D739A-ED20-4B69-B232-11462C90C766}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Permission.Infrastructure", "Permission.Infrastructure\Permission.Infrastructure.csproj", "{D0B11AB2-31BD-4324-BF82-0C1C03A780E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Permission.Infrastructure", "Permission.Infrastructure\Permission.Infrastructure.csproj", "{D0B11AB2-31BD-4324-BF82-0C1C03A780E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Core", "CQRS.Core\CQRS.Core.csproj", "{B8D819BB-3A70-4D3A-8AB1-F3FE45259F68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.Core", "CQRS.Core\CQRS.Core.csproj", "{B8D819BB-3A70-4D3A-8AB1-F3FE45259F68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Permission.Common", "Permission.Common\Permission.Common.csproj", "{99EC13AF-4BC3-48D3-AE9E-4AF83B3E742F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Permission.Common", "Permission.Common\Permission.Common.csproj", "{99EC13AF-4BC3-48D3-AE9E-4AF83B3E742F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A9F197B0-4279-469B-B22C-3ECFC41A53FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -48,5 +45,11 @@ Global
 		{99EC13AF-4BC3-48D3-AE9E-4AF83B3E742F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99EC13AF-4BC3-48D3-AE9E-4AF83B3E742F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99EC13AF-4BC3-48D3-AE9E-4AF83B3E742F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {74E3E5C3-6EC7-4239-AF23-6A632362926B}
 	EndGlobalSection
 EndGlobal

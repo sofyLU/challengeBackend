@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Permission.Domain.Entities
@@ -25,11 +26,16 @@ namespace Permission.Domain.Entities
         public DateTime PermissionDate { get; set; }
 
         [Comment("Permission Type")]
+        [JsonIgnore]
         public virtual PermissionTypeEntity PermissionType { get; set; }
 
+        public PermissionEntity()
+        {
+        }
         protected PermissionEntity(int id) : base(id) 
         {
         }
 
+       
     }
 }

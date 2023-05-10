@@ -21,7 +21,8 @@ services:
       - sqlserver:/var/opt/mssql
 
   zookeeper:
-    image: bitnami/zookeeper
+    image: zookeeper
+    container_name: zookeeper
     restart: always
     ports:
       - "2181:2181"
@@ -31,7 +32,7 @@ services:
       - ALLOW_ANONYMOUS_LOGIN=yes
 
   kafka:
-    image: bitnami/kafka
+    image: confluentinc/cp-kafka
     ports:
       - "9092:9092"
     restart: always
@@ -45,9 +46,19 @@ services:
     depends_on:
       - zookeeper  
 
+  mongo:
+    image: mongo:latest
+    container_name: mongo-container
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data_container:/data/db
+
 volumes:
   sqlserver:
   zookeeper_data:
     driver: local
   kafka_data:
     driver: local
+  mongodb_data_container:

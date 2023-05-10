@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CQRS.Core.Messages
+namespace Permission.Common.DTOs
 {
-    public class Message
+    public class BaseResponse
     {
-        public int Id { get; set; }
+        public string Message { get; set; }
     }
 }

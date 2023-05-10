@@ -1,5 +1,6 @@
 ﻿using CQRS.Core.Events;
 using Permission.Common.Events.DTOs;
+using Permission.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,8 @@ namespace Permission.Common.Events
         {
         }
 
-        public Guid Id { get; set; }
         public string EmployeeName { get; set; }
         public string EmployeeSurName { get; set; }
-        public PermissionTypeDto PermissionType { get; set; }
+        public PermissionTypeEntity PermissionType { get; set; }
     }
 }

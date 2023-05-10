@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CQRS.Core.Messages
+namespace CQRS.Core.Exceptions
 {
-    public class Message
+    public class ConcurrencyException : Exception
     {
-        public int Id { get; set; }
     }
 }

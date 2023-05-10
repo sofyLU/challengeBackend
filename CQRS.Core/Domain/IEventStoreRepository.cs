@@ -10,6 +10,6 @@ namespace CQRS.Core.Domain
     public interface IEventStoreRepository
     {
         Task SaveAsync(EventModel @event);
-        Task<List<EventModel>> FindByAggregateId(Guid aggregateId0);
+        Task<List<EventModel>> FindByAggregateId(int aggregateId);
     }
 }

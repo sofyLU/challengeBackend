@@ -12,10 +12,10 @@ namespace Permission.Common.Domain.Entities
 {
     public class BaseEntity
     {
-        [Comment("Unique Id")]
         [Column(TypeName = "integer")]
-        [Key]
         public int Id { get; set; }
+
+        protected BaseEntity() { }
 
         protected BaseEntity(int id) 
         {

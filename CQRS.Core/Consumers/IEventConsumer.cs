@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CQRS.Core.Messages
+namespace CQRS.Core.Consumers
 {
-    public class Message
+    public interface IEventConsumer
     {
-        public int Id { get; set; }
+        void Consume(string topic);
     }
 }

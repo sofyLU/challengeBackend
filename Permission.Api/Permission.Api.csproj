@@ -7,11 +7,14 @@
   </PropertyGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Permission.Application\Permission.Application.csproj" />
 		<ProjectReference Include="..\Permission.Domain\Permission.Domain.csproj" />
 		<ProjectReference Include="..\Permission.Infrastructure\Permission.Infrastructure.csproj" />
 	</ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="7.0.1" />
+    <PackageReference Include="Confluent.Kafka" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />

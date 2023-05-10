@@ -9,9 +9,9 @@ namespace Permission.Domain
 {
     public abstract class AggregateRoot
     {
-        protected Guid _id;
+        protected int _id;
         private readonly List<BaseEvent> _changes = new();
-        public Guid Id
+        public int Id
         {
             get { return _id; }
         }

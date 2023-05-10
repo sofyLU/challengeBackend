@@ -7,6 +7,7 @@ using Permission.Application.Queries;
 using Permission.Common.Domain.Models;
 using Permission.Common.DTOs;
 using Permission.Domain.Entities;
+using Serilog;
 using System.Net;
 
 namespace Permission.Api.Controllers
@@ -57,6 +58,7 @@ namespace Permission.Api.Controllers
                 };
 
                 await _commandDispatcher.SendAsync(command);
+                Log.Information("RequestPermission Index executed at {date}", DateTime.UtcNow);
 
                 return StatusCode(StatusCodes.Status201Created, new RequestPermissionResponse
                 {
@@ -118,6 +120,7 @@ namespace Permission.Api.Controllers
                 };
 
                 await _commandDispatcher.SendAsync(command);
+                Log.Information("ModifyPermission Index executed at {date}", DateTime.UtcNow);
 
                 return Ok(new RequestPermissionResponse
                 {
@@ -191,6 +194,8 @@ namespace Permission.Api.Controllers
                 {
                     return NoContent();
                 }
+
+                Log.Information("GetAllPermissions Index executed at {date}", DateTime.UtcNow);
 
                 var count = permissions.Count;
 

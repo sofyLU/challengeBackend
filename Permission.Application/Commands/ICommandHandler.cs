@@ -8,7 +8,7 @@ namespace Permission.Application.Commands
 {
     public interface ICommandHandler
     {
-        Task HandleAsync(RequestPermissionCommand command);
-        Task HandleAsync(ModifyPermissionCommand command);
+        Task<int> HandleAsync(RequestPermissionCommand command);
+        Task<int> HandleAsync(ModifyPermissionCommand command);
     }
 }

@@ -17,6 +17,6 @@ namespace Permission.Common.Events
 
         public string EmployeeName { get; set; }
         public string EmployeeSurName { get; set; }
-        public PermissionTypeEntity PermissionType { get; set; }
+        public int PermissionTypeId { get; set; }
     }
 }

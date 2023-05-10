@@ -40,6 +40,7 @@ namespace Permission.Application.Commands
             var dbPermission = _permissionRepository.Add(permission);
 
             await _permissionRepository.UnitOfWork.SaveEntitiesAsync();
+            command.Id = dbPermission.Id;
 
             var aggregate = new PermissionAggregate(dbPermission.Id, command.EmployeeName, command.EmployeeSurName, command.PermissionTypeId);
 

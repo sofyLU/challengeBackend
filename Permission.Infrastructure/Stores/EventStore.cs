@@ -44,8 +44,6 @@ namespace Permission.Infrastructure.Stores
             {
                 if(eventStream[^1]?.Version != expectedVersion)
                     throw new ConcurrencyException();
-
-                throw new ConcurrencyException();
             }
 
             var version = expectedVersion;

@@ -2,14 +2,19 @@ using Autofac;
 using Confluent.Kafka;
 using CQRS.Core.Consumers;
 using CQRS.Core.Domain;
+using CQRS.Core.Events;
 using CQRS.Core.Handlers;
 using CQRS.Core.Infrastructure;
 using CQRS.Core.Producers;
 using Microsoft.EntityFrameworkCore;
+using MongoDB.Bson.Serialization;
 using Permission.Application.Commands;
+using Permission.Application.Queries;
 using Permission.Common.Domain.Interfaces.Services;
+using Permission.Common.Events;
 using Permission.Common.Infrastructure.EntityFramework;
 using Permission.Domain.Aggregates;
+using Permission.Domain.Entities;
 using Permission.Domain.Interfaces;
 using Permission.Domain.Interfaces.Repositories;
 using Permission.Infrastructure.Config;
@@ -22,6 +27,11 @@ using Permission.Infrastructure.Repositories;
 using Permission.Infrastructure.Stores;
 
 var builder = WebApplication.CreateBuilder(args);
+
+BsonClassMap.RegisterClassMap<BaseEvent>();
+BsonClassMap.RegisterClassMap<PermissionCreatedEvent>();
+BsonClassMap.RegisterClassMap<PermissionUpdatedEvent>();
+// BsonClassMap.RegisterClassMap<PermissionGotEvent>();
 
 // Add services to the container.
 builder.Services.Configure<MongoDbConfig>(builder.Configuration.GetSection(nameof(MongoDbConfig)));
@@ -67,9 +77,16 @@ dispatcher.RegisterHandler<RequestPermissionCommand>(commandHandler.HandleAsync)
 dispatcher.RegisterHandler<ModifyPermissionCommand>(commandHandler.HandleAsync);
 builder.Services.AddSingleton<ICommandDispatcher>(_ => dispatcher);
 
+builder.Services.AddScoped<IQueryHandler, QueryHandler>();
 builder.Services.AddScoped<IEventHandler, Permission.Infrastructure.Handlers.EventHandler>();
 builder.Services.Configure<ConsumerConfig>(builder.Configuration.GetSection(nameof(ConsumerConfig)));
 builder.Services.AddScoped<IEventConsumer,EventConsumer>();
+
+// register command queries
+var queryHandler = builder.Services.BuildServiceProvider().GetRequiredService<IQueryHandler>();
+var dispatcherQuery = new QueryDispatcher();
+dispatcherQuery.RegisterHandler<GetAllPermissionsQuery>(queryHandler.HandleAsync);
+builder.Services.AddSingleton<IQueryDispatcher<PermissionEntity>>(_ => dispatcherQuery);
 
 builder.Services.AddControllers();
 builder.Services.AddHostedService<ConsumerHostedService>();
